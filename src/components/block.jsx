@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import AddBlock from './addBlock';
+import { dbService, storageService } from '../firebase';
 
 const Block = () => {
 
@@ -11,18 +13,7 @@ const Block = () => {
         {name: "scr"},
         {name: "js"},
     ])
-
-    console.log(fixeds);
-
-    const [blocks, setBlocks] = useState([]);
-
-    const onChange = (event) => {
-        const {target:{value}} = event;
-        setBlocks(value);
-    }
-    const onClick = (event) => {
-        event.preventDefault();
-    }
+    const [items, setItems] = useState([]);
 
     return (
         <form>
@@ -40,21 +31,6 @@ const Block = () => {
                 </div>
             </div>
             <div>
-                <h2>커스텀 확장자</h2>
-                <div>
-                    <input
-                        value={blocks}
-                        onChange={onChange}
-                        type="text"
-                        placeholder=""
-                        maxLength={10}
-                    />
-                    <input type="submit" value="+추가" onClick={onClick} />
-                </div>
-                <div>
-                    <p>/200</p>
-                    {/* map */}
-                </div>
             </div>
         </form>
     )
