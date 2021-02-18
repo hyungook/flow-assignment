@@ -1,38 +1,46 @@
-import express from 'express';
-import mysql from 'mysql';
-// import bodyParser from 'body-parser';
-import cors from 'cors';
+import express from "express";
+import mysql from "mysql";
+import cors from "cors";
 
-const app=express();
-const port =4000;
-
-const con = mysql.createConnection({
-    host : "localhost",
-    user : "root",
-    password: "1q2w3e4r",
-    database:"example"
-})
-
-con.connect();
+const app = express();
 
 app.use(cors());
+app.use(express.json());
 
-app.get('/', (req,res) =>{
-  res.send("test");
-})
+const db = mysql.createConnection({
+  user: "root",
+  host: "localhost",
+  password: "1q2w3e4r",
+  database: "example",
+});
 
-app.get('/custom', (req,res) =>{
-   
-   con.query("select customkeyword from testsample",
-   function(err,rows,fields){
-       if(err){
-           console.warn('error');
-       }else{
-           console.log('success');
-       };
-    });
-})
+app.post("/create", (req, res) => {
+  console.log(req.body);
+  const custom = req.body.custom;
 
-app.listen(port,()=>{
-    console.log(`Connect at http://localhost:${port}`);
-})
+  db.query(
+    "insert into testboard (customword) values(?)",
+    custom,
+    (err, result) => {
+      if (err) {
+        console.warn(err);
+      } else {
+        res.send("Inserted");
+      }
+    }
+  );
+});
+
+app.get("/keyword", (req, res) => {
+  db.query("select customword from testboard", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.listen(4000, () => {
+  console.log("server runnig on port 4000");
+});
