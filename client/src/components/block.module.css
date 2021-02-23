@@ -1,0 +1,82 @@
+.container {
+  width: 100%;
+  padding: 2rem 6rem;
+  /* background-color: #ddd; */
+  border-top: 1px solid #ddd;
+}
+.pick {
+}
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.pickWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  /* background-color: blue; */
+}
+.check {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: red; */
+}
+.check > input {
+  margin-right: 6px;
+}
+.pic {
+}
+.inputWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  outline: none;
+}
+.inputBox {
+  width: 18rem;
+  border: 1px solid #777;
+  padding: 0.3rem;
+  border-radius: 50px;
+  margin-right: 6px;
+  text-align: center;
+  outline: none;
+}
+.inputAdd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #777;
+  border-radius: 50px;
+  padding: 0.3rem 0.8rem;
+  outline: none;
+}
+.customWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+.custom {
+  margin-right: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #777;
+  border-radius: 50px;
+  padding: 0.2rem 0.4rem;
+  outline: none;
+}
+.del {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1px solid #222;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 4px;
+  outline: none;
+}

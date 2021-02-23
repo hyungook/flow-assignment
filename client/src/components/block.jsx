@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import styles from './block.module.css'
 
 function Block() {
   const [pic, setPic] = useState([]);
@@ -76,36 +77,40 @@ function Block() {
   }, [pic]);
 
   return (
-    <div className="block">
-      <section>
+    <div className={styles.container}>
+      <section className={styles.pick}>
         <h2>고정 확장자</h2>
         {/* {wordlist} */}
-        {piclist.map(fixed => {
-            return (
-                <>
-                    <input type="checkBox" key={fixed.id} value={fixed.name} />
-                    <label>{fixed.name}</label>
-                </>
-            )
-        })}
+        <div className={styles.pickWrap}>
+          {piclist.map(fixed => {
+              return (
+                  <span className={styles.check}>
+                      <input type="checkBox" key={fixed.id} value={fixed.name} />
+                      <label>{fixed.name}</label>
+                  </span>
+              )
+          })}
+        </div>
       </section>
       <section>
         <h2>커스텀 확장자</h2>
-        <div>
-          <input name="custom" onChange={onChangeCustom} value={custom} maxLength="20" />
-          <button onClick={addCustom}>+ 추가</button>
+        <div className={styles.inputWrap}>
+          <input className={styles.inputBox} name="custom" onChange={onChangeCustom} value={custom} maxLength="20" />
+          <button className={styles.inputAdd} onClick={addCustom}>+ 추가</button>
         </div>
-        
-        {customList.map((val, key) => {
-          return (
-            <div className="custom">
-              {val.customword}
-              <button onClick={() => {deletCustom(val.id)}}>
-                X
-              </button>
-            </div>
-          );
-        })}
+        <div className={styles.customWrap}>
+          {customList.map((val, key) => {
+            return (
+              // <div className="custom">
+              <div className={styles.custom}>
+                {val.customword}
+                <button className={styles.del} onClick={() => {deletCustom(val.id)}}>
+                  X
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
